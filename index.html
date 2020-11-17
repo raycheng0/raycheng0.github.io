@@ -1,80 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>QR Code Scanner</title>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=description content="QR Code Scanner is the fastest and most user-friendly web application.">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="QR Scanner" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#e4e4e4">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="QR Scanner" />
-    <meta name="msapplication-TileColor" content="#e4e4e4" />
-    <meta name="msapplication-TileImage" content="/images/touch/mstile-150x150.png" />
-    <meta name="theme-color" content="#fff" />
-    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.jpg" />
-    <link rel="icon" type="image/png" href="/images/touch/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/images/touch/favicon-16x16.png" sizes="16x16" />
-    <link rel="shortcut icon" href="/images/touch/favicon.ico">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="preload" as="script" href="decoder.js">
-  </head>
-  <body>
-    <div class="app__layout">
-      <!-- Header -->
-      <header class="app__header">
-        <span class="app__header-icon" onclick="window.open('https://github.com/code-kotis/barcode-scanner', '_blank', 'toolbar=0,location=0,menubar=0');">
-          <svg fill="#FFFFFF" height="27" viewBox="0 0 24 24" width="27" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
-          </svg>
-        </span>
-      </header>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet"
+          href="https://cdn.bitmovin.com/player/web/8/bitmovinplayer-ui.css">
+    <style>
+    
+<style>
+    .bmpui-ui-skin-modern .bmpui-ui-watermark {
+        display: none;
+    }
+</style>
+    
+<script type="text/javascript"
+        src="https://cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
+<script type="text/javascript"
+        src="https://cdn.bitmovin.com/analytics/web/beta/2/bitmovinanalytics.min.js"></script>
+<div class="switch-demo">
 
-      <main class="app__layout-content">
-        <video autoplay></video>
-
-        <!-- Dialog  -->
-        <div class="app__dialog app__dialog--hide">
-          <div class="app__dialog-content">
-            <h5>QR Code</h5>
-            <input type="text" id="result">
-          </div>
-          <div class="app__dialog-actions">
-            <button type="button" class="app__dialog-open">Open</button>
-            <button type="button" class="app__dialog-close">Close</button>
-          </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="description">
+                <p>Experience the Bitmovin Player's ability to switch between streams without having to run setup twice.
+                    This
+                    improves the speed immensely</p>
+            </div>
         </div>
-
-        <div class="app__dialog-overlay app__dialog--hide"></div>
-
-        <!-- Snackbar -->
-        <div class="app__snackbar"></div>
-      </main>
-    </div>
-    <div class="app__overlay">
-      <div class="app__overlay-frame"></div>
-      <!-- Scanner animation -->
-      <div class="custom-scanner"></div>
-      <div class="app__help-text"></div>
     </div>
 
-    <div class="app__select-photos"></div>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="player" style="margin:0 auto; height:50%;width:90%" class="tv-frame">
+                <div id="player-container1"></div>
+                <div id="player-container2"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row button-container">
+                <div class="col-md-12">
+                <p>
+                    <span id="switch-time" style="margin-left:5%">Click a button to show switch time.</span>
+                <p>
+                </div>
+                <div class="col-md-12">
+                    <button style="margin:0 auto; display:block; width:90%; border-radius:8px; background-color:#27A844;" class="channel-button btn btn-success" id="ch1" type="button" onclick="switchChannel('1', event)">Cantonese<span class="timer"></span></button>
+                </div>
+                <p>
+                <div class="col-md-12">
+                    <button style="margin:0 auto; display:block; width:90%; border-radius:8px; background-color:#FEC107;" class="channel-button btn btn-warning" id="ch2" type="button" onclick="switchChannel('2', event)">English<span class="timer"></span></button>
+                </div>
+                <p>
+                <div class="col-md-12">
+                    <button style="margin:0 auto; display:block; width:90%; border-radius:8px; background-color:#007BFD;" class="channel-button btn btn-primary" id="ch3" type="button" onclick="switchChannel('3', event)">Putonghua<span class="timer"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script>
-      if (location.hostname !== "localhost") {
-        (function (i, s, o, g, r, a, m) {
-          i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-          }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'pageview');
-      }
-    </script>
-    <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.6/pwacompat.min.js" integrity="sha384-GOaSLecPIMCJksN83HLuYf9FToOiQ2Df0+0ntv7ey8zjUHESXhthwvq9hXAZTifA"
-      crossorigin="anonymous"></script>
-  </body>
-</html>
+    <div class="row">
+        <div class="col-lg-6 info-col"></div>
+        <div class="col-lg-6 code-col"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 info-col"></div>
+        <div class="col-lg-6 code-col"></div>
+    </div>
+</div>
+<script type="text/javascript" src="script.js"></script>
