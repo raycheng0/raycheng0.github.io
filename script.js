@@ -161,11 +161,7 @@ function switchChannel(channelID, event) {
         //title: 'CGTN1',
         title: 'Cantonese',
         description: '',
-        hls: 'https://media.fantv.hk/m3u8/archive/channel2.m3u8'
-        //hls: 'http://live.cgtn.com/cctv-r.m3u8'
-        //hls: 'http://streaming.macaudsat.com/test/can.m3u8'
-        //hls: 'https://cmaflive-test.akamaized.net/cmaf/live/2013021/Cantonese/Cantonese_CMAF_Primary/playlist.m3u8'
-        //hls: 'http://34.92.250.197/llc/mk/manifest.mpd'
+        hls: 'https://gcalic.v.myalicdn.com/gc/zjwzlxt_1/index.m3u8'
       }
     } else if (channelID === '2') {
       source = {
@@ -173,21 +169,14 @@ function switchChannel(channelID, event) {
         //title: 'CGTN2',
         title: 'English',
         description: '',
-        //hls: 'http://rthklive1-lh.akamaihd.net/i/rthk31_1@167495/index_810_av-b.m3u8?sd=10&rebase=on'
-        //hls: 'http://live.cgtn.com/manifest.m3u8'
-        //hls: 'http://streaming.macaudsat.com/test/eng.m3u8'
-        //hls: 'https://cmaflive-test.akamaized.net/cmaf/live/2013021/English/English_CMAF_Primary/playlist.m3u8'
-        dash: 'http://34.92.250.197/llc/mk/manifest.mpd'
+        hls: 'https://gcalic.v.myalicdn.com/gc/hnttbdjd_1/index.m3u8'
       };
     } else {
       source = {
         //title: '\u6FB3\u8996\u885B\u661F',
         title: 'Putonghua',
         description: '',
-        hls: 'https://live4.tdm.com.mo/ch3/_definst_/ch3.live/playlist.m3u8'
-        //hls: 'https://cmaflive-test.akamaized.net/cmaf/live/2013021/Putonghua/Putonghua_CMAF_Primary/playlist.m3u8'
-        //hls: 'http://34.92.250.197/llc/mk/manifest.mpd'
-        
+        hls: 'https://gccncc.v.wscdns.com/gc/caqdh_1/index.m3u8'        
       }
     }
 
