@@ -83,7 +83,6 @@ function onTimeChanged1() {
   x2.style.display = "none";
   x1.style.display = "block";
   player2.unload();
-  player1.setVideoQuality('720_1096000');
   
   switchTime = Date.now();
   var diffTime = switchTime - clickTime - delayTime;
@@ -146,19 +145,19 @@ function switchChannel(channelID, event) {
       source = {
         title: 'Source 1',
         description: '',
-        hls: 'https://gcalic.v.myalicdn.com/gc/zjwzlxt_1/index.m3u8'
+        dash: 'http://35.241.110.86/llc/jc1/manifest.mpd'
       }
     } else if (channelID === '2') {
       source = {
         title: 'Source 2',
         description: '',
-        hls: 'https://gcalic.v.myalicdn.com/gc/hnttbdjd_1/index.m3u8'
+        dash: 'https://bitmovin-a.akamaihd.net/content/sintel/sintel.mpd'
       };
     } else {
       source = {
         title: 'Source 3',
         description: '',
-        hls: 'https://gccncc.v.wscdns.com/gc/caqdh_1/index.m3u8'        
+        dash: 'http://35.241.110.86/llc/jc2/manifest.mpd'        
       }
     }
 
